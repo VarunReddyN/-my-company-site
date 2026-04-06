@@ -9,7 +9,7 @@ export default function ContactPage() {
     e.preventDefault()
     const fd = new FormData(e.currentTarget)
     fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "YOUR_KEY_HERE")
-    fd.append("subject", "New inquiry — Creative AI Works")
+    fd.append("subject", "New inquiry — creAIve Labs")
     await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })
     setSubmitted(true)
   }
@@ -32,13 +32,13 @@ export default function ContactPage() {
       <div className="max-w-xl mx-auto">
         {/* Contact info + Calendly */}
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <a href="mailto:hello@creativeaiworks.com"
+          <a href="mailto:hello@creaivelabs.com"
             className="flex-1 rounded-2xl bg-[#2d3436] border border-[#3d4446] p-5 hover:border-[#800000] transition-colors">
             <p className="text-xs text-gray-500 mb-1">Email</p>
-            <p className="font-semibold text-white text-sm">hello@creativeaiworks.com</p>
+            <p className="font-semibold text-white text-sm">hello@creaivelabs.com</p>
             <p className="text-xs text-gray-500 mt-1">I reply within 24 hours</p>
           </a>
-          <a href="https://calendly.com/varunreddy-ai/30min" target="_blank" rel="noopener noreferrer"
+          <a href="https://cal.com/creaivelabs" target="_blank" rel="noopener noreferrer"
             className="flex-1 rounded-2xl bg-[#800000]/10 border border-[#800000]/40 p-5 hover:bg-[#800000]/20 transition-colors">
             <p className="text-xs text-[#e07070] mb-1">Prefer a call?</p>
             <p className="font-semibold text-white text-sm">Book a Free 30-Min Call</p>

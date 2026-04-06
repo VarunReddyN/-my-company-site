@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#2a0000" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="core-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6060" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#cc2020" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#800000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3030" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ff3030" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="aurora" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#8b0000" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#8b0000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="line-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="#080808"/>
+  <rect width="800" height="800" fill="url(#bg-glow)"/>
+  <!-- Aurora center bloom -->
+  <ellipse cx="400" cy="310" rx="310" ry="230" fill="url(#aurora)"/>
+
+  <!-- Triangle outline (ghost) -->
+  <polygon points="400,190 510,390 290,390" fill="none" stroke="#800000" stroke-opacity="0.22" stroke-width="1.5"/>
+
+  <!-- Connection lines with glow -->
+  <g filter="url(#line-glow)">
+    <line x1="400" y1="310" x2="400" y2="196" stroke="#cc3030" stroke-width="3" stroke-opacity="0.75" stroke-linecap="round"/>
+    <line x1="400" y1="310" x2="503" y2="385" stroke="#cc3030" stroke-width="3" stroke-opacity="0.75" stroke-linecap="round"/>
+    <line x1="400" y1="310" x2="297" y2="385" stroke="#cc3030" stroke-width="3" stroke-opacity="0.75" stroke-linecap="round"/>
+  </g>
+
+  <!-- Top node halo -->
+  <circle cx="400" cy="192" r="38" fill="url(#halo)"/>
+  <!-- Bottom-right node halo -->
+  <circle cx="504" cy="388" r="32" fill="url(#halo)" fill-opacity="0.7"/>
+  <!-- Bottom-left node halo -->
+  <circle cx="296" cy="388" r="32" fill="url(#halo)" fill-opacity="0.7"/>
+
+  <!-- Center node halo -->
+  <circle cx="400" cy="310" r="80" fill="url(#halo)"/>
+
+  <!-- Top node -->
+  <circle cx="400" cy="192" r="14" fill="#e05555" filter="url(#soft-glow)"/>
+  <circle cx="400" cy="192" r="8" fill="#ff7070"/>
+
+  <!-- Bottom-right node -->
+  <circle cx="504" cy="388" r="12" fill="#c03535" filter="url(#soft-glow)"/>
+  <circle cx="504" cy="388" r="6.5" fill="#e05050"/>
+
+  <!-- Bottom-left node -->
+  <circle cx="296" cy="388" r="12" fill="#c03535" filter="url(#soft-glow)"/>
+  <circle cx="296" cy="388" r="6.5" fill="#e05050"/>
+
+  <!-- Center node (main) -->
+  <circle cx="400" cy="310" r="44" fill="url(#core-grad)" filter="url(#soft-glow)"/>
+  <circle cx="400" cy="310" r="20" fill="#ff7070"/>
+  <circle cx="400" cy="310" r="10" fill="#ffaaaa"/>
+
+  <!-- Text: creAIve Labs -->
+  <!-- "cre" -->
+  <text x="164" y="530" font-family="'Helvetica Neue', Arial, sans-serif" font-size="82" font-weight="300" letter-spacing="-1" fill="#e8e8e8">cre</text>
+  <!-- "AI" bold red -->
+  <text x="303" y="530" font-family="'Helvetica Neue', Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-1" fill="#cc2020">AI</text>
+  <!-- "ve" -->
+  <text x="395" y="530" font-family="'Helvetica Neue', Arial, sans-serif" font-size="82" font-weight="300" letter-spacing="-1" fill="#e8e8e8">ve</text>
+  <!-- "Labs" -->
+  <text x="487" y="530" font-family="'Helvetica Neue', Arial, sans-serif" font-size="82" font-weight="300" letter-spacing="-1" fill="#e8e8e8"> Labs</text>
+
+  <!-- Tagline -->
+  <text x="400" y="598" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="400" letter-spacing="5" fill="#888888" text-anchor="middle">AI SYSTEMS FOR SERVICE BUSINESSES</text>
+</svg>

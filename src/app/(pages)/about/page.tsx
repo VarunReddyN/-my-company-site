@@ -40,7 +40,7 @@ export default function AboutPage() {
           Builders of <span className="text-[#e05555]">Practical AI</span>
         </h1>
         <p className="text-gray-400 text-lg leading-relaxed mb-4">
-          Creative AI Works is Varun Reddy — a senior AI engineer who personally designs, builds, and deploys every solution for every client. No account managers. No juniors assigned after the sales call. When you hire Creative AI Works, you work directly with the person building your system.
+          creAIve Labs is Varun Reddy — a senior AI engineer who personally designs, builds, and deploys every solution for every client. No account managers. No juniors assigned after the sales call. When you hire creAIve Labs, you work directly with the person building your system.
         </p>
         <p className="text-gray-400 text-lg leading-relaxed">
           I believe the best AI isn&apos;t the most complex — it&apos;s the kind that ships in weeks, fits your workflow, and shows measurable ROI from the first month. That&apos;s the only kind I build.
@@ -87,9 +87,9 @@ export default function AboutPage() {
           </div>
           <div>
             <p className="text-xl font-bold text-white">Varun Reddy</p>
-            <p className="text-sm text-[#e07070] mb-4">Founder &amp; Lead AI Engineer — Creative AI Works</p>
+            <p className="text-sm text-[#e07070] mb-4">Founder &amp; Lead AI Engineer — creAIve Labs</p>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              I started Creative AI Works because I kept watching businesses spend money on consultants who promised AI transformation and delivered slide decks. I build the actual system — deploy it in your environment, train your team, and stay until it works. Every project is mine personally.
+              I started creAIve Labs because I kept watching businesses spend money on consultants who promised AI transformation and delivered slide decks. I build the actual system — deploy it in your environment, train your team, and stay until it works. Every project is mine personally.
             </p>
             <div className="flex flex-wrap gap-2">
               {["Machine Learning", "NLP", "Computer Vision", "MLOps", "Python", "React"].map((skill) => (

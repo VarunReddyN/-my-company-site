@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
+  <defs>
+    <radialGradient id="bg-left" cx="20%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#2a0000" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg-right" cx="80%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a0000" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="center-bloom" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b0000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8b0000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="core-grad2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6060" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#cc2020" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#800000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3030" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ff3030" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow2" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="line-glow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1500" height="500" fill="#080808"/>
+  <rect width="1500" height="500" fill="url(#bg-left)"/>
+  <rect width="1500" height="500" fill="url(#bg-right)"/>
+
+  <!-- Subtle grid lines (very faint) -->
+  <line x1="0" y1="166" x2="1500" y2="166" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="0" y1="333" x2="1500" y2="333" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="375" y1="0" x2="375" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="750" y1="0" x2="750" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="1125" y1="0" x2="1125" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+
+  <!-- Center bloom behind mark -->
+  <ellipse cx="280" cy="250" rx="260" ry="220" fill="url(#center-bloom)"/>
+
+  <!-- === LOGO MARK (left side, centered vertically) === -->
+  <!-- Triangle outline -->
+  <polygon points="280,110 370,285 190,285" fill="none" stroke="#800000" stroke-opacity="0.22" stroke-width="1.2"/>
+
+  <!-- Connection lines -->
+  <g filter="url(#line-glow2)">
+    <line x1="280" y1="225" x2="280" y2="117" stroke="#cc3030" stroke-width="2.5" stroke-opacity="0.75" stroke-linecap="round"/>
+    <line x1="280" y1="225" x2="364" y2="280" stroke="#cc3030" stroke-width="2.5" stroke-opacity="0.75" stroke-linecap="round"/>
+    <line x1="280" y1="225" x2="196" y2="280" stroke="#cc3030" stroke-width="2.5" stroke-opacity="0.75" stroke-linecap="round"/>
+  </g>
+
+  <!-- Node halos -->
+  <circle cx="280" cy="115" r="28" fill="url(#halo2)"/>
+  <circle cx="366" cy="282" r="24" fill="url(#halo2)" fill-opacity="0.7"/>
+  <circle cx="194" cy="282" r="24" fill="url(#halo2)" fill-opacity="0.7"/>
+  <circle cx="280" cy="225" r="55" fill="url(#halo2)"/>
+
+  <!-- Top node -->
+  <circle cx="280" cy="115" r="10" fill="#e05555" filter="url(#glow2)"/>
+  <circle cx="280" cy="115" r="5.5" fill="#ff7070"/>
+
+  <!-- Bottom-right node -->
+  <circle cx="366" cy="282" r="8.5" fill="#c03535" filter="url(#glow2)"/>
+  <circle cx="366" cy="282" r="4.5" fill="#e05050"/>
+
+  <!-- Bottom-left node -->
+  <circle cx="194" cy="282" r="8.5" fill="#c03535" filter="url(#glow2)"/>
+  <circle cx="194" cy="282" r="4.5" fill="#e05050"/>
+
+  <!-- Center node -->
+  <circle cx="280" cy="225" r="30" fill="url(#core-grad2)" filter="url(#glow2)"/>
+  <circle cx="280" cy="225" r="14" fill="#ff7070"/>
+  <circle cx="280" cy="225" r="7" fill="#ffaaaa"/>
+
+  <!-- Divider line -->
+  <line x1="430" y1="130" x2="430" y2="370" stroke="#800000" stroke-opacity="0.35" stroke-width="1"/>
+
+  <!-- === TEXT (right of divider) === -->
+  <!-- "cre" -->
+  <text x="468" y="248" font-family="'Helvetica Neue', Arial, sans-serif" font-size="88" font-weight="300" letter-spacing="-2" fill="#e8e8e8">cre</text>
+  <!-- "AI" bold red -->
+  <text x="652" y="248" font-family="'Helvetica Neue', Arial, sans-serif" font-size="88" font-weight="700" letter-spacing="-2" fill="#cc2020">AI</text>
+  <!-- "ve" -->
+  <text x="760" y="248" font-family="'Helvetica Neue', Arial, sans-serif" font-size="88" font-weight="300" letter-spacing="-2" fill="#e8e8e8">ve Labs</text>
+
+  <!-- Tagline -->
+  <text x="468" y="304" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="400" letter-spacing="5.5" fill="#666666">AI SYSTEMS FOR SERVICE BUSINESSES</text>
+
+  <!-- Website -->
+  <text x="468" y="368" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="300" letter-spacing="2" fill="#4a4a4a">creaivelabs.com</text>
+
+  <!-- Right side decorative dots (subtle network nodes) -->
+  <circle cx="1280" cy="140" r="3" fill="#cc2020" fill-opacity="0.5"/>
+  <circle cx="1380" cy="200" r="2" fill="#cc2020" fill-opacity="0.35"/>
+  <circle cx="1320" cy="300" r="2.5" fill="#cc2020" fill-opacity="0.4"/>
+  <circle cx="1420" cy="360" r="2" fill="#cc2020" fill-opacity="0.3"/>
+  <line x1="1280" y1="140" x2="1380" y2="200" stroke="#cc2020" stroke-opacity="0.18" stroke-width="1"/>
+  <line x1="1380" y1="200" x2="1320" y2="300" stroke="#cc2020" stroke-opacity="0.15" stroke-width="1"/>
+  <line x1="1320" y1="300" x2="1420" y2="360" stroke="#cc2020" stroke-opacity="0.12" stroke-width="1"/>
+  <line x1="1280" y1="140" x2="1320" y2="300" stroke="#cc2020" stroke-opacity="0.10" stroke-width="1"/>
+</svg>

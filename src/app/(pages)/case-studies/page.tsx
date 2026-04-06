@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react"
 import { caseStudiesData } from "@/lib/content"
 
 export const metadata = {
-  title: "Case Studies — Creative AI Works | AI Solutions in Action",
-  description: "Real AI projects. Real results. See how Creative AI Works has helped businesses cut costs, automate operations, and drive measurable growth.",
+  title: "Case Studies — creAIve Labs | AI Solutions in Action",
+  description: "Real AI projects. Real results. See how creAIve Labs has helped businesses cut costs, automate operations, and drive measurable growth.",
 }
 
 export default function CaseStudiesPage() {

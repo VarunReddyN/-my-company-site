@@ -103,7 +103,7 @@ const WORK_ITEMS = [
     metrics: ["3–5 leads/week recovered", "< 60 sec response time", "Booked from missed calls"],
     color: "#f5a342",
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&fit=crop",
-    slug: "geo-ai-advertising",
+    slug: "fraud-detection",
   },
   {
     tag: "Medical & Med Spa",
@@ -119,7 +119,7 @@ const WORK_ITEMS = [
     metrics: ["2× more consultations booked", "Intake fully automated", "Zero dropped inquiries"],
     color: "#a080f0",
     img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80&fit=crop",
-    slug: "predictive-inventory",
+    slug: "vision-qa",
   },
 ]
 
@@ -528,6 +528,69 @@ export function CreAIveConditioner() {
           </div>
         </section>
 
+        {/* ── WORK / CASE STUDIES ── */}
+        <section id="work" className="w-full py-20 md:py-28 bg-[#060606]">
+          <div className="mx-auto max-w-7xl px-6">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              className="text-center mb-14"
+            >
+              <span className="mb-3 inline-block rounded-full border border-[#800000]/40 bg-[#800000]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#e07070]">
+                Systems We Build
+              </span>
+              <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+                AI Systems Designed{" "}
+                <span className="text-[#e05555]">for Real Businesses</span>
+              </h2>
+              <p className="mt-4 mx-auto max-w-xl text-gray-500 text-lg">
+                Each project is a custom-built AI system — scoped, built, and deployed for a specific business type and workflow.
+              </p>
+            </motion.div>
+
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
+              className="grid gap-5 md:grid-cols-3"
+            >
+              {WORK_ITEMS.map((w, i) => (
+                <motion.div key={i} variants={itemAnim} whileHover={{ y: -6 }}
+                  className="group relative overflow-hidden rounded-3xl border border-white/6 bg-[#0a0a0a] flex flex-col"
+                >
+                  <div className="relative h-44 overflow-hidden">
+                    <Image src={w.img} alt={w.title} fill className="object-cover transition-transform duration-600 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-[#0a0a0a]" />
+                    <span className="absolute top-4 left-4 text-[11px] font-bold px-3 py-1 rounded-full"
+                      style={{ background: `${w.color}25`, color: w.color, border: `1px solid ${w.color}35` }}
+                    >{w.tag}</span>
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="font-extrabold text-white text-base leading-snug mb-4">{w.title}</h3>
+                    <ul className="space-y-2 flex-1 mb-5">
+                      {w.metrics.map(m => (
+                        <li key={m} className="flex items-center gap-2 text-sm text-gray-400">
+                          <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: w.color }} />
+                          {m}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href={`/case-studies/${w.slug}`}
+                      className="flex items-center gap-1.5 text-sm font-semibold transition-colors group-hover:underline underline-offset-4"
+                      style={{ color: w.color }}
+                    >
+                      View Case Study <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <div className="mt-10 text-center">
+              <Link href="/case-studies">
+                <Button variant="outline" size="lg" className="rounded-xl border-white/12 bg-white/4 text-white hover:bg-white/8">
+                  See All Case Studies <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* ── BODHI TREE SECTION (detailed interactive) ── */}
         <BodhiTreeSection />
 
@@ -663,69 +726,6 @@ export function CreAIveConditioner() {
                   ))}
                 </ul>
               </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── WORK / CASE STUDIES ── */}
-        <section id="work" className="w-full py-20 md:py-28 bg-[#060606]">
-          <div className="mx-auto max-w-7xl px-6">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="text-center mb-14"
-            >
-              <span className="mb-3 inline-block rounded-full border border-[#800000]/40 bg-[#800000]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#e07070]">
-                Systems We Build
-              </span>
-              <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-                AI Systems Designed{" "}
-                <span className="text-[#e05555]">for Real Businesses</span>
-              </h2>
-              <p className="mt-4 mx-auto max-w-xl text-gray-500 text-lg">
-                Each project is a custom-built AI system — scoped, built, and deployed for a specific business type and workflow.
-              </p>
-            </motion.div>
-
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-              className="grid gap-5 md:grid-cols-3"
-            >
-              {WORK_ITEMS.map((w, i) => (
-                <motion.div key={i} variants={itemAnim} whileHover={{ y: -6 }}
-                  className="group relative overflow-hidden rounded-3xl border border-white/6 bg-[#0a0a0a] flex flex-col"
-                >
-                  <div className="relative h-44 overflow-hidden">
-                    <Image src={w.img} alt={w.title} fill className="object-cover transition-transform duration-600 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-[#0a0a0a]" />
-                    <span className="absolute top-4 left-4 text-[11px] font-bold px-3 py-1 rounded-full"
-                      style={{ background: `${w.color}25`, color: w.color, border: `1px solid ${w.color}35` }}
-                    >{w.tag}</span>
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="font-extrabold text-white text-base leading-snug mb-4">{w.title}</h3>
-                    <ul className="space-y-2 flex-1 mb-5">
-                      {w.metrics.map(m => (
-                        <li key={m} className="flex items-center gap-2 text-sm text-gray-400">
-                          <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: w.color }} />
-                          {m}
-                        </li>
-                      ))}
-                    </ul>
-                    <Link href={`/case-studies/${w.slug}`}
-                      className="flex items-center gap-1.5 text-sm font-semibold transition-colors group-hover:underline underline-offset-4"
-                      style={{ color: w.color }}
-                    >
-                      View Case Study <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <div className="mt-10 text-center">
-              <Link href="/case-studies">
-                <Button variant="outline" size="lg" className="rounded-xl border-white/12 bg-white/4 text-white hover:bg-white/8">
-                  See All Case Studies <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
@@ -985,7 +985,7 @@ export function CreAIveConditioner() {
                   onSubmit={async (e) => {
                     e.preventDefault()
                     const fd = new FormData(e.currentTarget)
-                    fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "YOUR_KEY_HERE")
+                    fd.append("access_key", "2cc16080-a24e-45c3-bf1e-059390d77a26")
                     fd.append("subject", "New inquiry from creAIve Labs website")
                     await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })
                     ;(e.target as HTMLFormElement).reset()

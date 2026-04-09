@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#800000" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#800000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6060" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#cc2020" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#800000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="32" height="32" rx="7.5" fill="#0d0d0d"/>
+  <rect width="32" height="32" rx="7.5" fill="url(#bg)"/>
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="7" fill="none" stroke="#800000" stroke-opacity="0.4" stroke-width="0.75"/>
+  <!-- Outer triangle (subtle) -->
+  <path d="M16 7.5 L23.5 20.5 L8.5 20.5 Z" fill="none" stroke="#800000" stroke-opacity="0.30" stroke-width="0.6"/>
+  <!-- Spokes: center → each node -->
+  <line x1="16" y1="15.5" x2="16" y2="9" stroke="#c03030" stroke-width="1.1" stroke-opacity="0.70" stroke-linecap="round"/>
+  <line x1="16" y1="15.5" x2="22.5" y2="20" stroke="#c03030" stroke-width="1.1" stroke-opacity="0.70" stroke-linecap="round"/>
+  <line x1="16" y1="15.5" x2="9.5" y2="20" stroke="#c03030" stroke-width="1.1" stroke-opacity="0.70" stroke-linecap="round"/>
+  <!-- Top node (brightest — primary system) -->
+  <circle cx="16" cy="7.5" r="2.2" fill="#e05555"/>
+  <!-- Bottom nodes -->
+  <circle cx="22.5" cy="20.5" r="1.9" fill="#c03535"/>
+  <circle cx="9.5" cy="20.5" r="1.9" fill="#c03535"/>
+  <!-- Center glowing core -->
+  <circle cx="16" cy="15.5" r="3.6" fill="url(#core)"/>
+  <circle cx="16" cy="15.5" r="1.6" fill="#ff7070"/>
+</svg>

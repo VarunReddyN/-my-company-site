@@ -8,10 +8,16 @@ export default function ContactPage() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const fd = new FormData(e.currentTarget)
-    fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "YOUR_KEY_HERE")
+    fd.append("access_key", "2cc16080-a24e-45c3-bf1e-059390d77a26")
     fd.append("subject", "New inquiry — creAIve Labs")
-    await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })
-    setSubmitted(true)
+    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })
+    const data = await res.json()
+    console.log("Web3Forms response:", data)
+    if (data.success) {
+      setSubmitted(true)
+    } else {
+      alert("Error: " + data.message)
+    }
   }
 
   return (

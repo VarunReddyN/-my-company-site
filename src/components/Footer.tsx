@@ -5,7 +5,7 @@ export default function Footer() {
         <span>
           &copy; {new Date().getFullYear()} creAIve Labs. All rights reserved.
         </span>
-        <span>Building the future with AI solutions.</span>
+        <span>AI systems that pay for themselves.</span>
       </div>
     </footer>
   );

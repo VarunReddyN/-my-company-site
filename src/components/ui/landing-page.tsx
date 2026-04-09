@@ -985,6 +985,19 @@ export function CreAIveConditioner() {
                   onSubmit={async (e) => {
                     e.preventDefault()
                     const fd = new FormData(e.currentTarget)
+
+                    // Save to Supabase dashboard
+                    const { supabase } = await import("@/lib/supabase")
+                    await supabase.from("leads").insert([{
+                      name: `${fd.get("first_name")} ${fd.get("last_name")}`.trim(),
+                      email: fd.get("email") as string,
+                      service: fd.get("service") as string,
+                      message: fd.get("message") as string,
+                      source: "homepage",
+                      status: "new",
+                    }])
+
+                    // Also send email via Web3Forms
                     fd.append("access_key", "2cc16080-a24e-45c3-bf1e-059390d77a26")
                     fd.append("subject", "New inquiry from creAIve Labs website")
                     await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })

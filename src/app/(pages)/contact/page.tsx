@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -8,11 +9,23 @@ export default function ContactPage() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const fd = new FormData(e.currentTarget)
+
+    // Save to Supabase dashboard
+    await supabase.from("leads").insert([{
+      name: fd.get("name") as string,
+      email: fd.get("email") as string,
+      company: fd.get("company") as string,
+      service: fd.get("service") as string,
+      message: fd.get("message") as string,
+      source: "contact-page",
+      status: "new",
+    }])
+
+    // Also send email via Web3Forms
     fd.append("access_key", "2cc16080-a24e-45c3-bf1e-059390d77a26")
     fd.append("subject", "New inquiry — creAIve Labs")
     const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd })
     const data = await res.json()
-    console.log("Web3Forms response:", data)
     if (data.success) {
       setSubmitted(true)
     } else {

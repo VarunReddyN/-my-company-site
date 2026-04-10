@@ -67,14 +67,6 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          <li>
-            <a
-              href="https://app.creaivelabs.com/login"
-              className="ml-2 px-4 py-2 rounded-lg text-sm font-semibold bg-[#800000] hover:bg-[#a00000] text-white transition-colors"
-            >
-              Login
-            </a>
-          </li>
         </ul>
       </nav>
     </header>

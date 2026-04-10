@@ -1133,6 +1133,12 @@ export function CreAIveConditioner() {
             <span>&copy; {new Date().getFullYear()} creAIve Labs. All rights reserved.</span>
             <div className="flex items-center gap-4">
               <span>AI systems for service businesses — United States</span>
+              <a
+                href="https://app.creaivelabs.com/login"
+                className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#800000] hover:bg-[#a00000] text-white transition-colors"
+              >
+                Client Login
+              </a>
               <div className="flex items-center gap-3">
                 <a href="https://www.linkedin.com/company/creaivelabs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                   className="text-gray-600 hover:text-white transition-colors">

@@ -7,6 +7,12 @@ export default function Footer() {
         </span>
         <div className="flex items-center gap-6">
           <span>AI systems that pay for themselves.</span>
+          <a
+              href="https://app.creaivelabs.com/login"
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#800000] hover:bg-[#a00000] text-white transition-colors"
+            >
+              Client Login
+            </a>
           <div className="flex items-center gap-3">
             {/* LinkedIn */}
             <a

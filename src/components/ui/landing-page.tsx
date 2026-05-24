@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
@@ -14,12 +15,15 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { AIBodhiTree } from "@/components/ui/ai-bodhi-tree"
 import { BodhiTreeSection } from "@/components/ui/bodhi-tree-section"
-import { JourneyModal } from "@/components/ui/journey-modal"
+
+// Lazy-load modal — only needed when user clicks a button
+const JourneyModal = dynamic(() => import("@/components/ui/journey-modal").then(m => ({ default: m.JourneyModal })), { ssr: false })
 
 /* ─── Animation presets ────────────────────────────────────────── */
-const fadeUp = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }
-const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.09 } } }
-const itemAnim = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }
+const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
+const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }
+const itemAnim = { hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0, transition: { duration: 0.4 } } }
+const OV = { once: true }
 
 /* ─── Static data ──────────────────────────────────────────────── */
 const NAV_LINKS = ["Services", "How It Works", "About", "Contact"]
@@ -168,19 +172,13 @@ function LogoMark({ size = 36 }: { size?: number }) {
   )
 }
 
-/* ─── Scroll glow — zero on hero, builds from page 2, fades at end ── */
-function ScrollGlowLayer() {
-  const { scrollYProgress } = useScroll()
-
-  // 0 through entire hero → ramps 0→1 across Services/BodhiTree/HowItWorks
-  // → holds through BeforeAfter + CaseStudies → descends 1→0 through About/FAQ/CTA/Contact
+/* ─── Scroll glow — accepts shared scrollYProgress to avoid 2nd useScroll ── */
+function ScrollGlowLayer({ scrollYProgress }: { scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
   const opacity = useTransform(
     scrollYProgress,
     [0, 0.14, 0.44, 0.64, 0.96, 1],
     [0,  0,    1,    1,    0,   0],
   )
-
-  // Parallax drift keeps them moving while opacity drives the 0-10 feel
   const y1 = useTransform(scrollYProgress, [0, 1], ["0vh", "-48vh"])
   const y2 = useTransform(scrollYProgress, [0, 1], ["6vh", "-40vh"])
 
@@ -235,14 +233,19 @@ export function CreAIveConditioner() {
   const [journeyOpen, setJourneyOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-  const { scrollY } = useScroll()
+  const sentinelRef = useRef<HTMLDivElement>(null)
+  const { scrollY, scrollYProgress } = useScroll()
   const heroOpacity = useTransform(scrollY, [0, 480], [1, 0])
-  const heroY = useTransform(scrollY, [0, 480], [0, -90])
+  const heroY = useTransform(scrollY, [0, 480], [0, -80])
 
+  // IntersectionObserver is far cheaper than scrollY.on("change") — zero re-renders on scroll
   useEffect(() => {
-    const unsub = scrollY.on("change", v => setScrolled(v > 40))
-    return unsub
-  }, [scrollY])
+    const el = sentinelRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(([e]) => setScrolled(!e.isIntersecting), { threshold: 0 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
@@ -323,8 +326,11 @@ export function CreAIveConditioner() {
         )}
       </AnimatePresence>
 
+      {/* Sentinel — when this exits viewport, navbar gets blur bg. Zero JS on scroll. */}
+      <div ref={sentinelRef} className="absolute top-16 h-px w-px pointer-events-none" aria-hidden />
+
       <main className="flex-1">
-        <ScrollGlowLayer />
+        <ScrollGlowLayer scrollYProgress={scrollYProgress} />
         {/* ── HERO ── */}
         <section className="relative min-h-screen flex items-center">
           {/* ── Aurora glow layer — 4 blobs max, GPU-safe ── */}
@@ -937,7 +943,7 @@ export function CreAIveConditioner() {
             className="mx-auto max-w-7xl px-6 grid gap-12 lg:grid-cols-2 items-start"
           >
             {/* Left */}
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="space-y-6">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={OV} transition={{ duration: 0.6 }} className="space-y-6">
               <span className="inline-block rounded-full border border-[#800000]/40 bg-[#800000]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#e07070]">
                 Get in Touch
               </span>
@@ -966,7 +972,7 @@ export function CreAIveConditioner() {
             </motion.div>
 
             {/* Right */}
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="space-y-4">
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={OV} transition={{ duration: 0.6 }} className="space-y-4">
               <motion.a href="https://cal.com/creaivelabs" target="_blank" rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                 className="flex items-center justify-between gap-4 rounded-2xl border border-[#800000]/45 bg-[#800000]/10 px-6 py-4 hover:bg-[#800000]/18 transition-colors cursor-pointer"

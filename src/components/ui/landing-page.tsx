@@ -600,10 +600,10 @@ export function CreAIveConditioner() {
             </motion.div>
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-              className="grid gap-5 md:grid-cols-3"
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
             >
               {WORK_ITEMS.map((w, i) => (
-                <motion.div key={i} variants={itemAnim} whileHover={{ y: -6 }}
+                <motion.div key={i} variants={itemAnim}
                   className="group relative overflow-hidden rounded-3xl border border-white/6 bg-[#0a0a0a] flex flex-col"
                 >
                   <div className="relative h-44 overflow-hidden">
@@ -645,7 +645,7 @@ export function CreAIveConditioner() {
                 Real Businesses. <span className="text-[#e05555]">Real Results.</span>
               </h2>
             </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-5 md:grid-cols-3">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {TESTIMONIALS.map((t, i) => (
                 <motion.div key={i} variants={itemAnim} className="rounded-3xl border border-white/6 bg-[#0a0a0a] p-7 flex flex-col gap-4">
                   <p className="text-gray-300 text-sm leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>

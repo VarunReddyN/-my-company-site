@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import {
   Wrench, UtensilsCrossed, Building2, Stethoscope, Briefcase, ShoppingBag,
   ArrowRight, ChevronDown, ChevronUp, Phone, MailCheck, Settings2,
+  CalendarDays, Megaphone,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -30,6 +31,20 @@ const offers = [
     color: "#a080f0",
     desc: "Routes requests, updates your CRM/sheets, sends daily summaries, assigns staff, and handles repetitive back-office tasks.",
     examples: ["CRM / Sheets updates", "Request routing & triage", "Daily summaries", "Staff assignment"],
+  },
+  {
+    icon: CalendarDays,
+    title: "Social Scheduling & Content",
+    color: "#50c8a0",
+    desc: "AI writes captions, schedules posts to Instagram, Facebook, and TikTok, fires SMS campaigns, and keeps your marketing calendar full — all on autopilot.",
+    examples: ["Instagram & Facebook posts", "TikTok scheduling", "SMS campaigns", "Marketing calendar"],
+  },
+  {
+    icon: Megaphone,
+    title: "AI Advertising",
+    color: "#4a9edd",
+    desc: "AI-powered Meta and Google Ads targeted within miles of your business. Writes copy, generates creative, picks the audience, and optimizes spend automatically.",
+    examples: ["Meta Ads (FB + Instagram)", "Google Ads", "AI ad creative", "Local targeting"],
   },
 ]
 
@@ -62,16 +77,16 @@ const branches = [
     ],
   },
   {
-    id: 2, label: "Real Estate & Property Managers", side: "left" as const,
-    icon: Building2, accent: "#60a8e0",
+    id: 2, label: "Grooming & Pet Care", side: "left" as const,
+    icon: ShoppingBag, accent: "#f5a342",
     tipX: 68, tipY: 258,
     path: "M 250 318 C 205 308, 150 280, 68 258",
-    tagline: "Every lead answered in seconds",
-    needs: ["Instant lead response & qualification", "Tour scheduling", "Property / listing FAQs", "Tenant maintenance triage"],
-    weBuilt: "AI responds to every inquiry in seconds, qualifies the lead, and books tours automatically — no back-and-forth emails. Tenant bots handle maintenance requests and route to the right person. CRM is updated automatically after every interaction.",
+    tagline: "Bookings, deposits & happy pet owners",
+    needs: ["24/7 appointment booking via AI phone", "Automatic deposit collection", "Appointment reminders to reduce no-shows", "Review requests after every groom"],
+    weBuilt: "AI phone agent books grooming appointments 24/7. Deposit links sent automatically after booking. Multi-step reminder sequences cut no-shows. Post-service review requests grow your Google rating without any manual effort.",
     savings: [
-      { label: "Lead Response Time", from: "Hours or days to reply manually", to: "AI responds in under 60 seconds", gain: "3–5× more tours booked" },
-      { label: "Tenant Admin", from: "Hours on maintenance calls & texts", to: "Bot triages and routes all requests", gain: "5–8 hrs/week saved" },
+      { label: "Missed Bookings", from: "Calls go unanswered during busy hours", to: "AI answers and books every call instantly", gain: "~$1–3k/mo recovered" },
+      { label: "No-Shows", from: "10–20% of appointments missed", to: "Automated 3-step reminder sequence", gain: "~40% fewer no-shows" },
     ],
   },
   {
@@ -101,16 +116,16 @@ const branches = [
     ],
   },
   {
-    id: 5, label: "Retail & Local Shops", side: "right" as const,
-    icon: ShoppingBag, accent: "#d4a017",
+    id: 5, label: "Landscaping & Contractors", side: "right" as const,
+    icon: Wrench, accent: "#50c8a0",
     tipX: 395, tipY: 345,
     path: "M 250 358 C 282 352, 332 345, 395 345",
-    tagline: "Capture more visitors and repeat buyers",
-    needs: ["Product FAQs & availability", "Promotions & loyalty campaigns", "Abandoned cart or visit follow-up", "Post-purchase review requests"],
-    weBuilt: "AI chat on website handles product questions and availability 24/7 — so no visitor leaves without an answer. SMS and email promotions drive repeat purchases. Abandoned visit follow-up runs automatically. Post-purchase review requests improve your local search ranking.",
+    tagline: "Run your crew without the chaos",
+    needs: ["AI phone captures every missed job lead", "Crew clock-in/out from mobile", "Job photo submissions from the field", "Automated follow-up on estimates"],
+    weBuilt: "AI receptionist texts back every missed call instantly and captures the job details. Crew portal lets workers clock in, upload job photos, and mark jobs done from their phones. Estimate follow-up sequences run automatically so no quote goes cold.",
     savings: [
-      { label: "Lost Visitors", from: "Questions unanswered — buyer leaves", to: "AI answers instantly, captures the lead", gain: "15–25% more conversions" },
-      { label: "Repeat Revenue", from: "No system for follow-up or reactivation", to: "Automated post-purchase sequences", gain: "20–30% higher customer LTV" },
+      { label: "Missed Job Leads", from: "Calls go to voicemail while you're on site", to: "AI texts back every missed call in 60s", gain: "3–5 new jobs/week recovered" },
+      { label: "Crew Admin", from: "Hours tracking hours, photos, status manually", to: "Crew updates everything from their phone", gain: "8–12 hrs/week saved" },
     ],
   },
 ]
@@ -529,7 +544,7 @@ export function BodhiTreeSection() {
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-14"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-14"
         >
           {offers.map((o, i) => {
             const Icon = o.icon

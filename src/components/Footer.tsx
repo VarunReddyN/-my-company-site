@@ -2,11 +2,12 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-[#3d4446] py-8 mt-auto">
       <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-        <span>
-          &copy; {new Date().getFullYear()} creAIve Labs. All rights reserved.
-        </span>
+        <div className="flex flex-col gap-1 text-center sm:text-left">
+          <span>&copy; {new Date().getFullYear()} creAIve Labs. All rights reserved.</span>
+          <span className="text-xs text-gray-600">13503 Copper Bed Rd, Herndon, VA 20171, US</span>
+        </div>
         <div className="flex items-center gap-6">
-          <span>AI systems that pay for themselves.</span>
+          <a href="/privacy" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">Privacy Policy</a>
           <a
               href="https://app.creaivelabs.com/login"
               className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#800000] hover:bg-[#a00000] text-white transition-colors"

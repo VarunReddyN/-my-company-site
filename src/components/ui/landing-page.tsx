@@ -9,6 +9,7 @@ import {
   Menu, X, ArrowRight, ChevronRight, Mail, MapPin,
   Send, Briefcase, Code, Zap, Phone, MailCheck, Settings2,
   Users, Clock, TrendingUp, Shield, CheckCircle, XCircle,
+  CalendarDays, Megaphone,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -53,6 +54,22 @@ const PILLARS = [
     desc: "Routine admin workflows — CRM updates, request routing, staff assignments, daily summaries — run automatically. Your team focuses on customers, not paperwork.",
     tags: ["CRM & Sheets updates", "Request routing", "Daily summaries", "Staff assignment"],
   },
+  {
+    color: "#50c8a0",
+    icon: <CalendarDays className="h-6 w-6" />,
+    title: "Social Scheduling & Content",
+    headline: "Post every day without lifting a finger.",
+    desc: "AI writes your social captions, schedules posts to Instagram, Facebook, and TikTok, fires SMS campaigns, and keeps your marketing calendar full — completely on autopilot.",
+    tags: ["Instagram & Facebook", "TikTok scheduling", "SMS campaigns", "Marketing calendar"],
+  },
+  {
+    color: "#4a9edd",
+    icon: <Megaphone className="h-6 w-6" />,
+    title: "AI Advertising",
+    headline: "Turn $5/day into new customers.",
+    desc: "AI-powered Meta and Google Ads targeted to people within miles of your business. AI writes the copy, generates ad creative, picks the audience, and optimizes spend automatically.",
+    tags: ["Meta Ads (FB + Instagram)", "Google Ads", "AI ad creative", "Local targeting"],
+  },
 ]
 
 const HOW_IT_WORKS = [
@@ -89,6 +106,8 @@ const BEFORE = [
   "Staff spend their mornings answering the same 10 questions.",
   "No-shows cost you 10–15% of your appointments.",
   "CRM is outdated. No one has time to update it.",
+  "Social media goes quiet for weeks at a time.",
+  "Ad budget wasted showing ads to the wrong people.",
 ]
 
 const AFTER = [
@@ -98,32 +117,55 @@ const AFTER = [
   "FAQs, bookings, and routine questions handled by AI.",
   "Automated reminder sequences reduce no-shows by up to 40%.",
   "CRM updates itself after every customer interaction.",
+  "Social posts go out every week — written and scheduled by AI.",
+  "Ads target people within miles of your business. AI handles the rest.",
 ]
 
 const WORK_ITEMS = [
   {
-    tag: "Home Services",
-    title: "How a roofing contractor stopped losing jobs after hours",
-    metrics: ["3–5 leads/week recovered", "< 60 sec response time", "Booked from missed calls"],
+    tag: "Grooming & Pet Care",
+    title: "How a grooming salon automated bookings and doubled deposit collection",
+    metrics: ["24/7 online booking via AI phone", "Deposit links sent automatically", "Review requests after every appointment"],
     color: "#f5a342",
-    img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&fit=crop",
-    slug: "fraud-detection",
+    img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80&fit=crop",
   },
   {
-    tag: "Medical & Med Spa",
-    title: "How a med spa reduced front-desk overload and no-shows",
-    metrics: ["40% fewer no-shows", "2–3 hrs/day staff time saved", "Patient reactivation automated"],
+    tag: "Restaurant",
+    title: "How a restaurant handled 300+ reservations per week without extra staff",
+    metrics: ["AI phone agent answers & books 24/7", "QR table ordering for dine-in", "Automated review requests after every visit"],
+    color: "#e05555",
+    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&fit=crop",
+  },
+  {
+    tag: "Landscaping",
+    title: "How a landscaping company tracked crew and closed more jobs in real time",
+    metrics: ["Crew clock-in/out from mobile", "Job photos submitted from field", "AI phone captures every missed lead"],
     color: "#50c8a0",
-    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&fit=crop",
-    slug: "nlp-support-bot",
+    img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80&fit=crop",
+  },
+]
+
+const TESTIMONIALS = [
+  {
+    quote: "The AI phone agent answered every call when we were slammed during dinner rush. We stopped losing customers after hours completely.",
+    name: "Restaurant Owner",
+    role: "Full-service restaurant, Texas",
+    color: "#e05555",
+    initial: "R",
   },
   {
-    tag: "Professional Services",
-    title: "How a law firm doubled its consultation bookings in 8 weeks",
-    metrics: ["2× more consultations booked", "Intake fully automated", "Zero dropped inquiries"],
-    color: "#a080f0",
-    img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80&fit=crop",
-    slug: "vision-qa",
+    quote: "Crew management used to take me an hour every morning. Now clock-ins, job photos, and assignments are all in one dashboard.",
+    name: "Landscaping Business Owner",
+    role: "Landscaping & lawn care, Virginia",
+    color: "#50c8a0",
+    initial: "L",
+  },
+  {
+    quote: "Clients book themselves, get deposit links automatically, and I get notified instantly. I didn't have to hire anyone extra.",
+    name: "Grooming Salon Owner",
+    role: "Pet grooming salon, Texas",
+    color: "#f5a342",
+    initial: "G",
   },
 ]
 
@@ -281,6 +323,11 @@ export function CreAIveConditioner() {
             <Button variant="ghost" size="sm" className="rounded-xl text-gray-400 hover:text-white" onClick={() => setJourneyOpen(true)}>
               Industry Blueprint
             </Button>
+            <a href="https://app.creaivelabs.com" target="_blank" rel="noopener noreferrer">
+              <Button variant="ghost" size="sm" className="rounded-xl text-gray-400 hover:text-white border border-white/10">
+                Client Login
+              </Button>
+            </a>
             <Button size="sm" className="rounded-xl bg-[#800000] hover:bg-[#a00000] text-white border-0"
               onClick={() => scrollTo("contact")}>
               Book a Free Call <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -488,18 +535,18 @@ export function CreAIveConditioner() {
               className="text-center mb-14"
             >
               <span className="mb-3 inline-block rounded-full border border-[#800000]/40 bg-[#800000]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#e07070]">
-                Three Core Systems
+                Five Core Systems
               </span>
               <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
                 AI That Pays for Itself <span className="text-[#e05555]">in Weeks</span>
               </h2>
               <p className="mt-4 mx-auto max-w-2xl text-gray-500 text-lg">
-                We don&apos;t sell &ldquo;AI.&rdquo; We sell faster response, more bookings, better follow-up, and less admin work — packaged into three focused systems.
+                We don&apos;t sell &ldquo;AI.&rdquo; We sell faster response, more bookings, better follow-up, scheduled content, and targeted ads — packaged into five focused systems.
               </p>
             </motion.div>
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-              className="grid gap-5 md:grid-cols-3"
+              className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
             >
               {PILLARS.map((p, i) => (
                 <motion.div key={i} variants={itemAnim} whileHover={{ y: -8, transition: { duration: 0.22 } }}
@@ -576,24 +623,42 @@ export function CreAIveConditioner() {
                         </li>
                       ))}
                     </ul>
-                    <Link href={`/case-studies/${w.slug}`}
-                      className="flex items-center gap-1.5 text-sm font-semibold transition-colors group-hover:underline underline-offset-4"
-                      style={{ color: w.color }}
-                    >
-                      View Case Study <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
+                    <a href="/#contact" className="flex items-center gap-1.5 text-sm font-semibold transition-colors hover:underline underline-offset-4" style={{ color: w.color }}>
+                      Get this for my business <ArrowRight className="h-3.5 w-3.5" />
+                    </a>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
 
-            <div className="mt-10 text-center">
-              <Link href="/case-studies">
-                <Button variant="outline" size="lg" className="rounded-xl border-white/12 bg-white/4 text-white hover:bg-white/8">
-                  See All Case Studies <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS ── */}
+        <section className="w-full py-20 md:py-24 bg-[#030303]">
+          <div className="mx-auto max-w-7xl px-6">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+              <span className="mb-3 inline-block rounded-full border border-[#800000]/40 bg-[#800000]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#e07070]">
+                What Clients Say
+              </span>
+              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Real Businesses. <span className="text-[#e05555]">Real Results.</span>
+              </h2>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-5 md:grid-cols-3">
+              {TESTIMONIALS.map((t, i) => (
+                <motion.div key={i} variants={itemAnim} className="rounded-3xl border border-white/6 bg-[#0a0a0a] p-7 flex flex-col gap-4">
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
+                  <div className="flex items-center gap-3 pt-2 border-t border-white/5">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold" style={{ background: `${t.color}25`, color: t.color }}>{t.initial}</div>
+                    <div>
+                      <p className="text-sm font-bold text-white">{t.name}</p>
+                      <p className="text-xs text-gray-500">{t.role}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
@@ -811,9 +876,10 @@ export function CreAIveConditioner() {
                       ))}
                     </div>
                     <div className="pt-1">
-                      <motion.a href="https://cal.com/creaivelabs" target="_blank" rel="noopener noreferrer"
+                      <motion.a href="/#contact"
                         whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                         className="flex items-center justify-between gap-3 rounded-2xl border border-[#800000]/35 bg-[#800000]/10 px-4 py-3 hover:bg-[#800000]/18 transition-colors"
+                        onClick={(e) => { e.preventDefault(); scrollTo("contact") }}
                       >
                         <div>
                           <p className="text-sm font-bold text-white">Book a Free 30-Min Call</p>
@@ -885,6 +951,27 @@ export function CreAIveConditioner() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── PRICING TEASER ── */}
+        <section className="w-full py-16 bg-[#060606]">
+          <div className="mx-auto max-w-4xl px-6 text-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <span className="mb-3 inline-block rounded-full border border-[#800000]/40 bg-[#800000]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#e07070]">Simple Pricing</span>
+              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl mb-4">
+                Plans Starting at <span className="text-[#e05555]">$99/mo</span>
+              </h2>
+              <p className="text-gray-500 mb-8 max-w-xl mx-auto">No setup fees. No long-term contracts. Cancel anytime. Everything your business needs in one platform.</p>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <a href="https://app.creaivelabs.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl px-8 py-3 bg-[#800000] hover:bg-[#a00000] text-white font-bold text-sm transition-colors">
+                  Start Free Trial <ArrowRight className="h-4 w-4" />
+                </a>
+                <button onClick={() => scrollTo("contact")} className="inline-flex items-center gap-2 rounded-xl px-8 py-3 border border-white/15 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm transition-colors">
+                  Talk to Us First
+                </button>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -973,9 +1060,10 @@ export function CreAIveConditioner() {
 
             {/* Right */}
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={OV} transition={{ duration: 0.6 }} className="space-y-4">
-              <motion.a href="https://cal.com/creaivelabs" target="_blank" rel="noopener noreferrer"
+              <motion.a href="/#contact"
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                 className="flex items-center justify-between gap-4 rounded-2xl border border-[#800000]/45 bg-[#800000]/10 px-6 py-4 hover:bg-[#800000]/18 transition-colors cursor-pointer"
+                onClick={(e) => { e.preventDefault(); scrollTo("contact") }}
               >
                 <div>
                   <p className="font-bold text-white text-sm">Book a Free 30-Min Strategy Call</p>
@@ -1096,19 +1184,21 @@ export function CreAIveConditioner() {
             {
               title: "Services",
               links: [
-                { label: "AI Front Desk", href: "/services/smart-chatbots" },
-                { label: "AI Follow-Up Engine", href: "/services/ai-automation" },
-                { label: "AI Operations Assistant", href: "/services/ai-strategy" },
-                { label: "All Services", href: "/services" },
+                { label: "AI Front Desk", href: "/#services" },
+                { label: "AI Follow-Up Engine", href: "/#services" },
+                { label: "AI Operations Assistant", href: "/#services" },
+                { label: "Social Scheduling & Content", href: "/#services" },
+                { label: "AI Advertising", href: "/#services" },
               ],
             },
             {
               title: "Industries",
               links: [
-                { label: "Home Services", href: "/#work" },
+                { label: "Restaurants & Cafes", href: "/#work" },
+                { label: "Grooming & Pet Care", href: "/#work" },
+                { label: "Landscaping & Contractors", href: "/#work" },
                 { label: "Medical & Med Spas", href: "/#work" },
-                { label: "Professional Services", href: "/#work" },
-                { label: "Restaurants & Salons", href: "/#work" },
+                { label: "Home Services", href: "/#work" },
               ],
             },
             {
@@ -1117,7 +1207,7 @@ export function CreAIveConditioner() {
                 { label: "About Us", href: "/about" },
                 { label: "Case Studies", href: "/case-studies" },
                 { label: "Contact", href: "/#contact" },
-                { label: "Book a Call", href: "https://cal.com/creaivelabs" },
+                { label: "Book a Call", href: "/#contact" },
               ],
             },
           ].map(({ title, links }) => (
@@ -1136,9 +1226,13 @@ export function CreAIveConditioner() {
         </div>
         <div className="border-t border-white/5">
           <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-5 text-xs text-gray-700">
-            <span>&copy; {new Date().getFullYear()} creAIve Labs. All rights reserved.</span>
+            <div className="flex flex-col items-center sm:items-start gap-0.5">
+              <span>&copy; {new Date().getFullYear()} creAIve Labs. All rights reserved.</span>
+              <span>13503 Copper Bed Rd, Herndon, VA 20171, US</span>
+            </div>
             <div className="flex items-center gap-4">
-              <span>AI systems for service businesses — United States</span>
+              <span>AI systems for service businesses</span>
+              <Link href="/privacy-policy" className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
               <a
                 href="https://app.creaivelabs.com/login"
                 className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#800000] hover:bg-[#a00000] text-white transition-colors"
